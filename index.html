@@ -3,10 +3,42 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mi Amore</title>
+    <title>Mi Amore Reminder</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 50px;
+            background-color: #f9f9f9;
+        }
+        #message {
+            font-size: 20px;
+            color: #333;
+        }
+    </style>
 </head>
 <body>
-    <h1>Hello Lang (Zhaii/Mi amore) ❤️</h1>
-    <p>Welcome to your special reminder page!</p>
+    <h1>Hey Lang (Zhaii/Mi amore) ❤️</h1>
+    <p id="message">Loading...</p>
+
+    <script>
+        const messages = [
+            "Hey Lang (Zhaii/Mi amore), just a little reminder... 😊",
+            "Take a deep breath and enjoy the moment. ✨",
+            "You are appreciated more than you know. 💛",
+            "Also, don’t forget to drink some water! 💧",
+            "No matter what, I’m always here for you. 🤍",
+            "Stay kind to yourself and have a wonderful day!"
+        ];
+
+        let index = 0;
+        function showMessage() {
+            document.getElementById("message").innerText = messages[index];
+            index = (index + 1) % messages.length;
+            setTimeout(showMessage, 3000);  // Change every 3 seconds
+        }
+
+        showMessage();
+    </script>
 </body>
 </html>
