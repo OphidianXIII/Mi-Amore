@@ -14,12 +14,14 @@
         #message {
             font-size: 20px;
             color: #333;
+            min-height: 50px;
         }
     </style>
 </head>
 <body>
     <h1>Hey Lang (Zhaii/Mi amore) ❤️</h1>
     <p id="message">Loading...</p>
+    <p id="hydration"></p>
 
     <script>
         const messages = [
@@ -35,10 +37,28 @@
         function showMessage() {
             document.getElementById("message").innerText = messages[index];
             index = (index + 1) % messages.length;
-            setTimeout(showMessage, 3000);  // Change every 3 seconds
+            setTimeout(showMessage, 3000);  // Change message every 3 seconds
+        }
+
+        function hydrationAnimation() {
+            const droplets = ["💧", "💦", "🌊"];
+            let count = 0;
+            let hydrationText = document.getElementById("hydration");
+
+            function animate() {
+                hydrationText.innerText = "Hydration Reminder: " + droplets[count % droplets.length];
+                count++;
+                if (count < 9) {  // Run animation for a few cycles
+                    setTimeout(animate, 500);
+                } else {
+                    hydrationText.innerText = "Hydration Reminder: Stay hydrated! 💙";
+                }
+            }
+            animate();
         }
 
         showMessage();
+        hydrationAnimation();
     </script>
 </body>
 </html>
