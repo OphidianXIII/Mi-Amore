@@ -3,62 +3,70 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mi Amore Reminder</title>
+    <title>Drink Water Reminder</title>
     <style>
         body {
             font-family: Arial, sans-serif;
             text-align: center;
-            margin: 50px;
-            background-color: #f9f9f9;
+            background-color: #e3f2fd;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        h1 {
+            font-size: 2.5em;
+            color: #0077b6;
+            animation: pulse 2s infinite;
         }
         #message {
-            font-size: 20px;
+            font-size: 1.5em;
             color: #333;
-            min-height: 50px;
+            margin-top: 20px;
+            font-weight: bold;
+        }
+        .droplets {
+            font-size: 2em;
+            animation: float 1.5s infinite;
+        }
+        @keyframes pulse {
+            0% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.1); opacity: 0.8; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+        @keyframes float {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0); }
         }
     </style>
 </head>
 <body>
-    <h1>Hey Lang (Zhaii/Mi amore) ❤️</h1>
-    <p id="message">Loading...</p>
-    <p id="hydration"></p>
+    <h1>💙 Stay Hydrated! 💙</h1>
+    <p id="message">Don't forget to drink water!</p>
+    <p class="droplets">💧💦🌊</p>
 
     <script>
         const messages = [
-            "Hey Lang (Zhaii/Mi amore), just a little reminder... 😊",
-            "Take a deep breath and enjoy the moment. ✨",
-            "You are appreciated more than you know. 💛",
-            "Also, don’t forget to drink some water! 💧",
-            "No matter what, I’m always here for you. 🤍",
-            "Stay kind to yourself and have a wonderful day!"
+            "Don't forget to drink water! 💧",
+            "Water is life—take a sip! 💙",
+            "Hydration is key to feeling great! 💦",
+            "Your body needs water—drink up! 🌊",
+            "Stay fresh, stay hydrated! 🚰",
+            "A little sip goes a long way! 🥤"
         ];
 
         let index = 0;
         function showMessage() {
             document.getElementById("message").innerText = messages[index];
             index = (index + 1) % messages.length;
-            setTimeout(showMessage, 3000);  // Change message every 3 seconds
-        }
-
-        function hydrationAnimation() {
-            const droplets = ["💧", "💦", "🌊"];
-            let count = 0;
-            let hydrationText = document.getElementById("hydration");
-
-            function animate() {
-                hydrationText.innerText = "Hydration Reminder: " + droplets[count % droplets.length];
-                count++;
-                if (count < 9) {  // Run animation for a few cycles
-                    setTimeout(animate, 500);
-                } else {
-                    hydrationText.innerText = "Hydration Reminder: Stay hydrated! 💙";
-                }
-            }
-            animate();
+            setTimeout(showMessage, 3000); // Change every 3 seconds
         }
 
         showMessage();
-        hydrationAnimation();
     </script>
 </body>
 </html>
